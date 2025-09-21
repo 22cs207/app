@@ -1,13 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const chatIcon = document.getElementById('chat-icon');
-    const chatContainer = document.getElementById('chat-container');
+    const chatIcon = document.querySelector('.chat-icon');
+    const chatContainer = document.querySelector('.chat-container');
     const chatMessages = document.getElementById('chat-messages');
     const chatInput = document.getElementById('chat-input');
     const sendBtn = document.getElementById('send-btn');
     const icon = chatIcon.querySelector('i');
-
-    const API_KEY = "AIzaSyAaoFBv2N3uFFSb8cLnDkTwq9ei1Cb8Vb0";
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
 
     const toggleChat = () => {
         chatContainer.classList.toggle('active');
@@ -40,8 +37,13 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     async function getBotResponse(userMessage) {
-        if (API_KEY === "YOUR_GOOGLE_AI_API_KEY_HERE") {
-            return "Error: Please add your Google AI API key to the script.";
+        // IMPORTANT: You MUST replace this placeholder with your own key.
+        // Get a key from Google AI Studio.
+        const API_KEY = "AIzaSyAd4AkgypS0V63QLQXGUTqWbvNpokecJ0M";
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+
+        if (API_KEY === "YOUR_GOOGLE_AI_API_KEY_HERE" || API_KEY === "AIzaSyAaoFBv2N3uFFSb8cLnDkTwq9ei1Cb8Vb0") {
+            return "Error: Please add your own valid Google AI API key to the chatbot.js script.";
         }
 
         try {
