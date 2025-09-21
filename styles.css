@@ -1,0 +1,1046 @@
+/* ASHOKA Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    /* Dark Forest Theme Colors */
+    --primary-green: #9fcf7f;        /* pale green-yellow for highlights */
+    --dark-green: #6b8e23;           /* deep forest green */
+    --light-green: #3b5323;          /* darker green for backgrounds */
+    --text-dark: #e0e0c0;            /* soft off-white text for contrast */
+    --text-gray: #c0c0a0;            /* muted text for secondary info */
+    --white: #f5f5dc;                /* pale cream for buttons and highlights */
+    --light-gray: #1e2b1e;           /* dark background shade */
+    --dark-gray: #203120;           /* dark background shade */
+    --border-color: #4b604b;         /* dark border for cards */
+}
+
+* {
+    .hero-text h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 2rem;
+        color: var(--white);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    n: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--light-gray);
+    overflow-x: hidden;
+    font-weight: 500; /* Make base font weight bolder */
+}
+
+/* ASHOKA Header */
+.ashoka-header {
+    background: var(--dark-gray);
+    padding: 1rem 2rem;
+    /* add side padding instead of container */
+    position: fixed;
+    /* stick to the very top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* full width */
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    width: 100%;
+    /* take full width */
+    margin: 0;
+    /* remove auto-centering */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.logo i {
+    margin-right: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600; /* Make navigation links bolder */
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dashboard-btn {
+    background: var(--white);
+    color: var(--primary-green);
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dashboard-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile-avatar {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.profile-avatar:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Hero Section */
+.hero-section {
+    background: var(--light-green);;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    width: 104%;
+    left: -10px;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+}
+
+.hero-text {
+    color: var(--white);
+    animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-text h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: var(--primary-green);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+    opacity: 1; /* Remove opacity to make text darker */
+    font-weight: 500; /* Make hero text bolder */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.explore-btn {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: var(--white);
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
+}
+
+.explore-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(34, 197, 94, 0.5);
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+}
+
+/* .hero-indicators { display: flex; gap: 0.5rem; } .indicator { width: 12px; height: 12px; border-radius: 50%; background: rgba(255, 255, 255, 0.3); cursor: pointer; transition: all 0.3s ease; } .indicator.active { background: var(--primary-green); } */
+/* Plant Growing Animation */
+.hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    opacity: 0.6;
+}
+
+.plant-growing {
+    position: relative;
+    z-index: 2;
+}
+
+.soil-base {
+    width: 200px;
+    height: 100px;
+    background: #8B4513;
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: -20px;
+}
+
+.plant-pot {
+    width: 150px;
+    height: 100px;
+    background: #CD853F;
+    border-radius: 20px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: -50px;
+}
+
+.plant-stem {
+    width: 8px;
+    height: 150px;
+    background: var(--primary-green);
+    margin: 0 auto;
+    border-radius: 4px;
+    position: relative;
+    z-index: 1;
+}
+
+.plant-leaves {
+    position: relative;
+    top: -100px;
+}
+
+.leaf {
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    background: var(--primary-green);
+    border-radius: 0 100% 0 100%;
+    transform-origin: bottom left;
+}
+
+.leaf-1 {
+    top: -20px;
+    left: 5px;
+    transform: rotate(-30deg);
+    animation: leafSway 3s ease-in-out infinite;
+}
+
+.leaf-2 {
+    top: -40px;
+    right: 5px;
+    transform: rotate(30deg) scaleX(-1);
+    animation: leafSway 3s ease-in-out infinite 0.5s;
+}
+
+.leaf-3 {
+    top: -60px;
+    left: 10px;
+    transform: rotate(-45deg);
+    animation: leafSway 3s ease-in-out infinite 1s;
+}
+
+.leaf-4 {
+    top: -80px;
+    right: 10px;
+    transform: rotate(45deg) scaleX(-1);
+    animation: leafSway 3s ease-in-out infinite 1.5s;
+}
+
+.leaf-5 {
+    top: -100px;
+    left: 20px;
+    transform: rotate(-15deg);
+    animation: leafSway 3s ease-in-out infinite 2s;
+}
+
+@keyframes leafSway {
+
+    0%,
+    100% {
+        transform: rotate(var(--rotation, 0deg)) translateY(0px);
+    }
+
+    50% {
+        transform: rotate(var(--rotation, 0deg)) translateY(-5px);
+    }
+}
+
+.floating-cards {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.floating-card {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: var(--white);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    animation: float 6s ease-in-out infinite;
+}
+
+.card-1 {
+    top: 10%;
+    right: 20%;
+    animation-delay: 0s;
+}
+
+.card-2 {
+    bottom: 20%;
+    right: 10%;
+    animation-delay: 1s;
+}
+
+.card-3 {
+    top: 30%;
+    left: 10%;
+    animation-delay: 2s;
+}
+
+.card-4 {
+    bottom: 40%;
+    left: 20%;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    33% {
+        transform: translateY(-10px) rotate(1deg);
+    }
+
+    66% {
+        transform: translateY(5px) rotate(-1deg);
+    }
+}
+
+/* Plant Cards Gallery */
+.plants-gallery {
+    background: var(--light-green);
+    padding: 4rem 0;
+    min-height: 100vh;
+    width: 104%;
+    position: relative;
+    left: -10px;
+}
+
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+
+}
+
+.plant-card {
+    background: var(--white);
+    border-radius: 16px;
+    border: 2px solid var(--primary-green);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.plant-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+
+
+}
+
+.card-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.card-image model-viewer {
+    width: 100%;
+    height: 100%;
+    background: var(--light-gray);
+}
+
+.plant-card:hover .card-image img {
+    transform: scale(1.1);
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    font-weight: 800; /* Make plant names very bold */
+    color: #000000; /* Make plant names black */
+    margin-bottom: 0.5rem;
+}
+
+.card-content p {
+    color: #333333; /* Make description text dark gray/black */
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-weight: 600; /* Make plant descriptions bold */
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.share-btn,
+.detail-btn {
+    background: none;
+    border: none;
+    color: #000000;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.detail-btn {
+    background: var(--primary-green);
+    color: var(--white);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    width: auto;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 700; /* Make button text bold */
+}
+
+.share-btn:hover {
+    color: var(--primary-green);
+    background: var(--light-green);
+    transform: scale(1.1);
+}
+
+.detail-btn:hover {
+    background: var(--dark-green);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+/* FAQ Section */
+.faq-section {
+    background: var(--light-green);
+    padding: 4rem 0;
+}
+
+.faq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 4rem;
+    align-items: start;
+}
+
+.faq-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-item {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.faq-question {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: var(--dark-gray);
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    background: var(--light-green);
+}
+
+.faq-question span {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.faq-question i {
+    color: var(--primary-green);
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    padding: 0 1.5rem 1.5rem;
+    color: #000000;
+    font-weight: 600;
+    display: none;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+/* FAQ Section */
+.faq-section {
+    background: var(--light-green);
+    padding: 4rem 0;
+    width: 104%;
+    position: relative;
+    left: -10px;
+}
+
+.faq-container {
+    display: flex;
+    gap: 2rem;
+    align-items: stretch;
+    /* Important: children stretch to same height */
+}
+
+.faq-content {
+    flex: 1 1 600px;
+    /* takes available space, min-width 600px */
+}
+
+.faq-illustration {
+    flex: 0 0 300px;
+    /* fixed width, flexible height */
+}
+
+.faq-image {
+    width: 100%;
+    height: 80%;
+    /* stretch to fill parent */
+    overflow: hidden;
+    border-radius: 20px;
+    position: relative;
+    top: 124px;
+}
+
+.faq-image img {
+    width: 100%;
+    height: 104%;
+    object-fit: cover;
+    /* image fills the box without distortion */
+    display: block;
+}
+
+.faq-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-item {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.faq-question {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: var(--light-gray);
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    background: var(--light-green);
+}
+
+.faq-question span {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.faq-question i {
+    color: var(--primary-green);
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    padding: 0 1.5rem 1.5rem;
+    color: #000000;
+    font-weight: 600;
+    display: none;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .faq-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .faq-illustration {
+        display: none;
+    }
+}
+
+/* About Us Section */
+.about-us-section {
+    background: var(--white);
+    padding: 4rem 0;
+    width: 104%;
+    position: relative;
+    left: -10px;
+}
+
+.about-us-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-green);
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.about-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.about-sections-wrapper {
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.team-members, .faculty-section {
+    flex: 1;
+    max-width: 500px;
+    margin-bottom: 2rem;
+}
+
+.team-members h3, .faculty-section h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--dark-green);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.team-carousel, .faculty-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.member-display, .faculty-display {
+    position: relative;
+    width: 350px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.team-indicators, .faculty-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: var(--primary-green);
+}
+
+.indicator:hover {
+    background: var(--dark-green);
+}
+
+.member-card, .faculty-card {
+    background: var(--light-green);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.5s ease;
+    border: 2px solid var(--border-color);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(50px);
+}
+
+.member-card.active, .faculty-card.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    z-index: 2;
+}
+
+.member-card:hover, .faculty-card:hover {
+    border-color: var(--primary-green);
+}
+
+.team-nav, .faculty-nav {
+    background: var(--primary-green);
+    color: var(--white);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-nav:hover, .faculty-nav:hover {
+    background: var(--dark-green);
+    transform: scale(1.1);
+}
+
+.member-info h4, .faculty-info h4 {
+    font-size: 1.3rem;
+    font-weight: 700; /* Make names bolder */
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.usn {
+    font-size: 1rem;
+    color: var(--primary-green);
+    font-weight: 600; /* Make USN bolder */
+    margin-bottom: 1rem;
+}
+
+.email {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #000000;
+    font-weight: 600;
+}
+
+.email a {
+    color: #000000;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500; /* Make email links bolder */
+}
+
+.email a:hover {
+    color: var(--primary-green);
+}
+
+.email i {
+    color: var(--primary-green);
+}
+
+.role {
+    font-size: 1.1rem;
+    color: var(--primary-green);
+    font-weight: 600; /* Make roles bolder */
+    margin-top: 0.5rem;
+}
+
+/* Call to Action */
+.cta-section {
+    background: var(--light-green);
+    padding: 4rem 0;
+    text-align: center;
+    width: 104%;
+    position: relative;
+    left: -10px;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+}
+
+.signup-btn {
+    background: var(--primary-green);
+    color: var(--white);
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.signup-btn:hover {
+    background: var(--dark-green);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .main-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+
+    .hero-visual {
+        height: 400px;
+    }
+
+    .gallery-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .faq-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .plant-window {
+        position: static;
+        margin: 0 auto;
+    }
+
+    .about-sections-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .team-members, .faculty-section {
+        max-width: 100%;
+    }
+
+    .team-carousel, .faculty-carousel {
+        gap: 1rem;
+    }
+
+    .member-display, .faculty-display {
+        width: 280px;
+        height: 180px;
+    }
+
+    .member-card, .faculty-card {
+        padding: 1.5rem;
+    }
+
+    .team-nav, .faculty-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    .gallery-container {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .faq-content h2,
+    .about-us-section h2,
+    .cta-section h2 {
+        font-size: 2rem;
+    }
+
+    .team-members h3, .faculty-section h3 {
+        font-size: 1.5rem;
+    }
+
+    .member-info h4, .faculty-info h4 {
+        font-size: 1.1rem;
+    }
+
+    .floating-cards {
+        display: none;
+    }
+}
+
+/* Medium screens - tablets */
+@media (max-width: 768px) {
+    .about-sections-wrapper {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .team-members, .faculty-section {
+        max-width: 100%;
+    }
+    
+    .member-display, .faculty-display {
+        width: 320px;
+        height: 190px;
+    }
+}
+
+/* JavaScript Functionality */
+.faq-item {
+    cursor: pointer;
+}
+
+.faq-item.active .faq-question {
+    background: var(--light-green);
+}

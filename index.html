@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYUSH - Virtual Herbal Garden</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="chatbot.css">
+</head>
+
+<body>
+    <header class="ashoka-header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>AYUSH</span>
+            </div>
+            <nav class="main-nav">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#garden" class="nav-link">Garden</a>
+                <a href="#explore" class="nav-link">Explore</a>
+                <a href="#my-garden" class="nav-link">My Garden</a>
+                <div class="dashboard-btn">DASHBOARD</div>
+            </nav>
+            <div class="user-profile">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>AYUSH Plants</h1>
+                    <p>AYUSH (Ayurveda, Yoga & Naturopathy, Unani, Siddha, and Homeopathy) represents India's
+                        traditional medicine systems. Our digital platform showcases medicinal plants used across these
+                        systems, combining ancient wisdom with modern technology to preserve and promote traditional
+                        herbal knowledge for healthcare and wellness.</p>
+                    <button class="explore-btn">EXPLORE MORE</button>
+                    <!-- <div class="hero-indicators">
+                        <span class="indicator active"></span>
+                        <span class="indicator"></span>
+                    </div> -->
+                </div>
+                <div class="hero-visual">
+                    <div class="plant-growing">
+                        <div class="soil-base"></div>
+                        <div class="plant-stem"></div>
+                        <div class="plant-leaves">
+                            <div class="leaf leaf-1"></div>
+                            <div class="leaf leaf-2"></div>
+                            <div class="leaf leaf-3"></div>
+                            <div class="leaf leaf-4"></div>
+                            <div class="leaf leaf-5"></div>
+                        </div>
+                        <div class="plant-pot"></div>
+                    </div>
+                    <div class="floating-cards">
+                        <div class="floating-card card-1">🌿</div>
+                        <div class="floating-card card-2">🏔️</div>
+                        <div class="floating-card card-3">🌱</div>
+                        <div class="floating-card card-4">🍃</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Plant Cards Gallery -->
+        <section class="plants-gallery">
+            <div class="gallery-container">
+                <div class="plant-card" data-plant="tulsi">
+                    <!-- <div class="card-image">
+                        <img src="images/Tulsi.jpg" alt="Tulsi">
+                    </div> -->
+                    <div class="card-image">
+                        <model-viewer src="models/tulsi.glb" alt="Ashwagandha" auto-rotate camera-controls
+                            style="width: 100%; height: 200px;"></model-viewer>
+                    </div>
+                    <div class="card-content">
+                        <h3>Tulsi (Holy Basil)</h3>
+                        <p>Sacred in Ayurveda, Tulsi is known as the "Queen of Herbs" with powerful adaptogenic and
+                            immune-boosting properties used across all AYUSH systems.</p>
+                        <div class="card-actions">
+                            <button class="share-btn"><i class="fas fa-share-alt"></i></button>
+                            <button class="detail-btn" onclick="viewPlantDetails('tulsi')">
+                                <i class="fas fa-eye"></i> View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plant-card" data-plant="ashwagandha">
+                    <div class="card-image">
+                        <model-viewer src="models/Ahwagandha.glb" alt="Ashwagandha" auto-rotate camera-controls
+                            style="width: 100%; height: 200px;"></model-viewer>
+                    </div>
+                    <div class="card-content">
+                        <h3>Ashwagandha</h3>
+                        <p>Known as "Indian Winter Cherry" in Ayurveda and Unani systems, this powerful adaptogen helps
+                            combat stress and enhances vitality.</p>
+                        <div class="card-actions">
+                            <button class="share-btn"><i class="fas fa-share-alt"></i></button>
+                            <button class="detail-btn" onclick="viewPlantDetails('ashwagandha')">
+                                <i class="fas fa-eye"></i> View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plant-card" data-plant="turmeric">
+                    <div class="card-image">
+                        <model-viewer src="models/Turmeric.glb" alt="Turmeric" auto-rotate camera-controls
+                            style="width: 100%; height: 200px;"></model-viewer>
+                    </div>
+                    <div class="card-content">
+                        <h3>Turmeric (Haldi)</h3>
+                        <p>A golden herb revered in Ayurveda and Siddha systems for its anti-inflammatory and healing
+                            properties, used extensively in AYUSH formulations.</p>
+                        <div class="card-actions">
+                            <button class="share-btn"><i class="fas fa-share-alt"></i></button>
+                            <button class="detail-btn" onclick="viewPlantDetails('turmeric')">
+                                <i class="fas fa-eye"></i> View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plant-card" data-plant="cinnamon">
+                    <div class="card-image">
+                        <model-viewer src="models/Cinnamon.glb" alt="Cinnamon" auto-rotate camera-controls
+                            style="width: 100%; height: 200px;"></model-viewer>
+                    </div>
+                    <div class="card-content">
+                        <h3>Cinnamon (Dalchini)</h3>
+                        <p>Used in Ayurveda and Unani systems for diabetes management and digestive health, this
+                            aromatic bark is a key AYUSH medicinal plant.</p>
+                        <div class="card-actions">
+                            <button class="share-btn"><i class="fas fa-share-alt"></i></button>
+                            <button class="detail-btn" onclick="viewPlantDetails('cinnamon')">
+                                <i class="fas fa-eye"></i> View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plant-card" data-plant="cardamom">
+                    <div class="card-image">
+                        <model-viewer src="models/Cardamom.glb" alt="Cardamom" auto-rotate camera-controls
+                            style="width: 100%; height: 200px;"></model-viewer>
+                    </div>
+                    <div class="card-content">
+                        <h3>Cardamom (Elaichi)</h3>
+                        <p>The "Queen of Spices" in Ayurveda and Siddha medicine, valued for digestive health and
+                            respiratory wellness in AYUSH treatments.</p>
+                        <div class="card-actions">
+                            <button class="share-btn"><i class="fas fa-share-alt"></i></button>
+                            <button class="detail-btn" onclick="viewPlantDetails('cardamom')">
+                                <i class="fas fa-eye"></i> View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plant-card" data-plant="clove">
+                    <div class="card-image">
+                        <model-viewer src="models/clove.glb" alt="Clove" auto-rotate camera-controls
+                            style="width: 100%; height: 200px;"></model-viewer>
+                    </div>
+                    <div class="card-content">
+                        <h3>Clove (Laung)</h3>
+                        <p>Extensively used in Ayurveda, Unani, and Siddha systems for dental care, pain relief, and
+                            respiratory health in traditional AYUSH formulations.</p>
+                        <div class="card-actions">
+                            <button class="share-btn"><i class="fas fa-share-alt"></i></button>
+                            <button class="detail-btn" onclick="viewPlantDetails('clove')">
+                                <i class="fas fa-eye"></i> View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="faq-container">
+                <div class="faq-content">
+                    <h2>General FAQ</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>What is the AYUSH Virtual Herbal Garden?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>The AYUSH Virtual Herbal Garden is a digital knowledge platform designed to:</p>
+                                <ul>
+                                    <li>Showcase authentic medicinal plants used in Ayurveda, Yoga & Naturopathy, Unani,
+                                        Siddha, and Homeopathy systems.</li>
+                                    <li>Provide interactive 3D models for better visualization of plant structures.</li>
+                                    <li>Bridge traditional wisdom with modern technology for education, research, and
+                                        public awareness.</li>
+                                    <li>Encourage sustainable cultivation and conservation of medicinal flora.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>What AYUSH systems are covered in this platform?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>The platform comprehensively covers all five AYUSH systems:</p>
+                                <ul>
+                                    <li><strong>Ayurveda</strong> – Traditional Indian medicine focusing on body
+                                        constitution (doshas) and herbal formulations.</li>
+                                    <li><strong>Yoga & Naturopathy</strong> – Practices that integrate physical
+                                        postures, breathing, and natural therapies for holistic wellness.</li>
+                                    <li><strong>Unani</strong> – Greco-Arabic medicine emphasizing balance of humors and
+                                        herbal-mineral remedies.</li>
+                                    <li><strong>Siddha</strong> – Ancient Tamil system using herbs, minerals, and
+                                        lifestyle practices for prevention and cure.</li>
+                                    <li><strong>Homeopathy</strong> – German-origin system using highly diluted remedies
+                                        for natural stimulation of healing.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>How are AYUSH plants different from regular medicinal plants?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>AYUSH plants hold a distinct status compared to general medicinal flora because:</p>
+                                <ul>
+                                    <li>They are <strong>documented in classical medical texts</strong> with centuries
+                                        of traditional usage.</li>
+                                    <li>Recognized officially by the <strong>Ministry of AYUSH, Government of
+                                            India</strong>.</li>
+                                    <li>Backed by <strong>pharmacopoeial standards</strong> for quality, safety, and
+                                        efficacy.</li>
+                                    <li>Integrated into <strong>formal healthcare systems</strong> including AYUSH
+                                        hospitals and wellness centers.</li>
+                                    <li>Validated through <strong>modern scientific research</strong> while retaining
+                                        cultural and traditional significance.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="faq-illustration">
+                    <div class="faq-image">
+                        <img src="UI_Images/faqImg.png" alt="Herbal Garden">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section class="about-us-section">
+            <h2>About Us</h2>
+            <div class="about-container">
+                <div class="about-sections-wrapper">
+                    <div class="team-members">
+                        <h3>Development Team</h3>
+                        <div class="team-carousel">
+                            <button class="team-nav prev-btn" onclick="changeTeamMember(-1); console.log('Team prev clicked');">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="member-display">
+                                <div class="member-card active" data-member="0">
+                                    <div class="member-info">
+                                        <h4>Shubham Gandhar</h4>
+                                        <p class="usn">USN: 1BY22CS173</p>
+                                        <p class="email">
+                                            <i class="fas fa-envelope"></i>
+                                            <a href="mailto:1by22cs173@bmsit.in">1by22cs173@bmsit.in</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="member-card" data-member="1">
+                                    <div class="member-info">
+                                        <h4>Upadhye Tejas Sachindeo</h4>
+                                        <p class="usn">USN: 1BY22CS187</p>
+                                        <p class="email">
+                                            <i class="fas fa-envelope"></i>
+                                            <a href="mailto:1by22cs187@bmsit.in">1by22cs187@bmsit.in</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="member-card" data-member="2">
+                                    <div class="member-info">
+                                        <h4>Vivek Pradhan</h4>
+                                        <p class="usn">USN: 1BY22CS203</p>
+                                        <p class="email">
+                                            <i class="fas fa-envelope"></i>
+                                            <a href="mailto:1by22cs203@bmsit.in">1by22cs203@bmsit.in</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="member-card" data-member="3">
+                                    <div class="member-info">
+                                        <h4>Yeddula Nandan Reddy</h4>
+                                        <p class="usn">USN: 1BY22CS207</p>
+                                        <p class="email">
+                                            <i class="fas fa-envelope"></i>
+                                            <a href="mailto:1by22cs207@bmsit.in">1by22cs207@bmsit.in</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="team-nav next-btn" onclick="changeTeamMember(1); console.log('Team next clicked');">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="team-indicators">
+                            <span class="indicator active" onclick="showTeamMember(0)"></span>
+                            <span class="indicator" onclick="showTeamMember(1)"></span>
+                            <span class="indicator" onclick="showTeamMember(2)"></span>
+                            <span class="indicator" onclick="showTeamMember(3)"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="faculty-section">
+                        <h3>Faculty & Mentors</h3>
+                        <div class="faculty-carousel">
+                            <button class="faculty-nav prev-btn" onclick="changeFacultyMember(-1); console.log('Faculty prev clicked');">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="faculty-display">
+                                <div class="faculty-card active" data-faculty="0">
+                                    <div class="faculty-info">
+                                        <h4>Dr. Aruna B N</h4>
+                                        <p class="role">Major Project Guide</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="faculty-card" data-faculty="1">
+                                    <div class="faculty-info">
+                                        <h4>Rajesh N V</h4>
+                                        <p class="role">Project Coordinator</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="faculty-card" data-faculty="2">
+                                    <div class="faculty-info">
+                                        <h4>Dr. Radhika</h4>
+                                        <p class="role">Cluster Head</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="faculty-nav next-btn" onclick="changeFacultyMember(1); console.log('Faculty next clicked');">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="faculty-indicators">
+                            <span class="indicator active" onclick="showFacultyMember(0)"></span>
+                            <span class="indicator" onclick="showFacultyMember(1)"></span>
+                            <span class="indicator" onclick="showFacultyMember(2)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <h2>Discover the Future of AYUSH Medicine</h2>
+            <button class="signup-btn">EXPLORE AYUSH PLANTS</button>
+        </section>
+    </main>
+
+    <!-- Chat Bubble -->
+    <div class="chat-bubble">
+        <div class="chat-icon">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chat-container">
+            <div class="chat-header">
+                <span>AYUSH Assistant</span>
+                <span class="close-btn"><i class="fas fa-times"></i></span>
+            </div>
+            <div class="chat-messages"></div>
+            <div class="chat-input-container">
+                <textarea class="chat-input" placeholder="Type your message..." rows="1"></textarea>
+                <button class="send-btn" title="Send message">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="mainScript.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+
+</html>

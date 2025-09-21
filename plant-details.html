@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Details - AYUSH Virtual Herbal Garden</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Leaflet CSS for interactive maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="plantDetailsStyle.css">
+</head>
+
+<body class="plant-detail-page">
+    <header class="ashoka-header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>AYUSH</span>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#garden" class="nav-link">Garden</a>
+                <a href="#explore" class="nav-link">Explore</a>
+                <a href="#my-garden" class="nav-link">My Garden</a>
+                <div class="dashboard-btn">DASHBOARD</div>
+            </nav>
+            <div class="user-profile">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Toggle -->
+    <button class="mobile-nav-toggle" onclick="toggleMobileNav()" style="display: none;">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" onclick="closeMobileNav()"></div>
+
+    <div class="page-layout">
+        <!-- Plant Navigation Sidebar -->
+        <div class="plant-navigation-sidebar" id="plantSidebar">
+            <div class="sidebar-header">
+                <div class="search-container">
+                    <input type="text" id="plantSearch" placeholder="Search plants..." class="plant-search">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+            </div>
+
+            <div class="plants-list">
+                <div class="plant-nav-item active" data-plant="tulsi">
+                    <div class="plant-thumb">🌿</div>
+                    <div class="plant-name">Tulsi</div>
+                </div>
+
+                <div class="plant-nav-item" data-plant="ashwagandha">
+                    <div class="plant-thumb">🌱</div>
+                    <div class="plant-name">Ashwagandha</div>
+                </div>
+
+                <div class="plant-nav-item" data-plant="turmeric">
+                    <div class="plant-thumb">🟡</div>
+                    <div class="plant-name">Turmeric</div>
+                </div>
+
+                <div class="plant-nav-item" data-plant="cinnamon">
+                    <div class="plant-thumb">🌰</div>
+                    <div class="plant-name">Cinnamon</div>
+                </div>
+
+                <div class="plant-nav-item" data-plant="cardamom">
+                    <div class="plant-thumb">🟢</div>
+                    <div class="plant-name">Cardamom</div>
+                </div>
+
+                <div class="plant-nav-item" data-plant="clove">
+                    <div class="plant-thumb">🟤</div>
+                    <div class="plant-name">Clove</div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <button onclick="window.location.href='index.html'" class="home-btn">
+                    <i class="fas fa-home"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="detail-container">
+
+            <!-- Back Button -->
+            <!-- <div style="margin-bottom: 1rem;">
+                <button onclick="window.location.href='index.html'" style="
+                background: var(--primary-green); 
+                color: white; 
+                border: none; 
+                padding: 0.75rem 1.5rem; 
+                border-radius: 8px; 
+                cursor: pointer; 
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                transition: all 0.3s ease;
+            " onmouseover="this.style.background='var(--dark-green)'"
+                    onmouseout="this.style.background='var(--primary-green)'">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </button>
+            </div> -->
+
+            <!-- Plant Header -->
+            <div class="plant-header">
+                <div class="plant-model-container">
+                    <model-viewer id="plantModel" src="" alt="Plant Model" auto-rotate camera-controls
+                        class="plant-model"></model-viewer>
+                </div>
+                <div class="plant-basic-info">
+                    <h1 id="plantName">Loading...</h1>
+                    <p class="scientific-name" id="scientificName">Loading...</p>
+                    <p class="description" id="plantDescription">Loading plant information...</p>
+                </div>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="content-sections">
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <h3>Contents:</h3>
+                    <ul class="sidebar-menu">
+                        <li><a href="#diseases" class="menu-link active" data-section="diseases">
+                                <i class="fas fa-shield-alt"></i> Diseases Cured
+                            </a></li>
+                        <li><a href="#uses" class="menu-link" data-section="uses">
+                                <i class="fas fa-leaf"></i> Uses
+                            </a></li>
+                        <li><a href="#cultivation" class="menu-link" data-section="cultivation">
+                                <i class="fas fa-seedling"></i> Cultivation Method
+                            </a></li>
+                        <li><a href="#harvesting" class="menu-link" data-section="harvesting">
+                                <i class="fas fa-cut"></i> Harvesting Methods
+                            </a></li>
+                        <li><a href="#location" class="menu-link" data-section="location">
+                                <i class="fas fa-map-marker-alt"></i> Where to Find
+                            </a></li>
+                    </ul>
+                </div>
+
+                <!-- Main Content -->
+                <div class="main-content">
+                    <!-- Diseases Cured Section -->
+                    <div id="diseases" class="content-section active">
+                        <h2><i class="fas fa-shield-alt"></i> Diseases Cured</h2>
+                        <div class="diseases-grid" id="diseasesList">
+                            <!-- Dynamic content will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Uses Section -->
+                    <div id="uses" class="content-section">
+                        <h2><i class="fas fa-leaf"></i> Uses</h2>
+                        <ul class="info-list" id="usesList">
+                            <!-- Dynamic content will be loaded here -->
+                        </ul>
+                    </div>
+
+                    <!-- Cultivation Method Section -->
+                    <div id="cultivation" class="content-section">
+                        <h2><i class="fas fa-seedling"></i> Cultivation Method</h2>
+                        <ul class="info-list" id="cultivationList">
+                            <!-- Dynamic content will be loaded here -->
+                        </ul>
+                    </div>
+
+                    <!-- Harvesting Methods Section -->
+                    <div id="harvesting" class="content-section">
+                        <h2><i class="fas fa-cut"></i> Harvesting Methods</h2>
+                        <ul class="info-list" id="harvestingList">
+                            <!-- Dynamic content will be loaded here -->
+                        </ul>
+                    </div>
+
+                    <!-- Where to Find Section -->
+                    <div id="location" class="content-section">
+                        <h2><i class="fas fa-map-marker-alt"></i> Where to Find</h2>
+
+                        <!-- Interactive Map -->
+                        <div class="map-container">
+                            <div id="plantLocationMap" class="plant-location-map"></div>
+                            <div class="map-legend">
+                                <h4 style="margin-bottom: 0.75rem; color: #000000; font-weight: 700;">Map Legend:</h4>
+                                <div class="legend-item">
+                                    <div class="legend-color legend-commercial"></div>
+                                    <span>Commercial Cultivation Areas</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color legend-wild"></div>
+                                    <span>Natural/Wild Habitat</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color legend-traditional"></div>
+                                    <span>Traditional Growing Regions</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color legend-sacred"></div>
+                                    <span>Sacred/Religious Significance</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Location Details List -->
+                        <ul class="info-list" id="locationList">
+                            <!-- Dynamic content will be loaded here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- Close detail-container -->
+    </div> <!-- Close page-layout -->
+
+    <script src="plantScript.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,454 @@
+.plant-detail-page {
+    background: var(--light-green);
+    min-height: 100vh;
+}
+
+.page-layout {
+    display: flex;
+    min-height: calc(100vh - 80px); /* Account for header height */
+}
+
+.plant-navigation-sidebar {
+    width: 300px;
+    background: var(--white);
+    border-right: 2px solid var(--border-color);
+    position: fixed;
+    left: 0;
+    top: 73px; /* Below header */
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--light-gray);
+}
+
+.search-container {
+    position: relative;
+}
+
+.plant-search {
+    width: 100%;
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--white);
+    color: #000000; /* Make search text black */
+    font-size: 0.85rem;
+    font-weight: 700; /* Make search text bold */
+    transition: all 0.3s ease;
+}
+
+.plant-search:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(159, 207, 127, 0.2);
+    background: #ffffff; /* Ensure background stays white when focused */
+}
+
+.plant-search::placeholder {
+    color: #666666; /* Make placeholder text medium gray */
+    font-weight: 400; /* Make placeholder text normal weight */
+    font-style: italic;
+}
+
+.search-icon {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-gray);
+    font-size: 0.8rem;
+}
+
+.plants-list {
+    padding: 0.5rem;
+}
+
+.plant-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 0.25rem;
+}
+
+.plant-nav-item:hover {
+    background: var(--light-green);
+    transform: translateX(3px);
+}
+
+.plant-nav-item.active {
+    background: var(--primary-green);
+    color: var(--white);
+    box-shadow: 0 2px 8px rgba(159, 207, 127, 0.3);
+}
+
+.plant-nav-item.active .plant-name {
+    color: var(--white);
+}
+
+.plant-thumb {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.plant-nav-item.active .plant-thumb {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.plant-name {
+    font-size: 0.9rem;
+    font-weight: 700; /* Make plant names very bold */
+    color: #000000; /* Make plant names black */
+    line-height: 1.2;
+}
+
+.sidebar-footer {
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--dark-gray);
+    position: sticky;
+    bottom: 0;
+}
+
+.home-btn {
+    width: 100%;
+    padding: 0.5rem;
+    background: var(--primary-green);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.home-btn:hover {
+    background: var(--dark-green);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(107, 142, 35, 0.3);
+}
+
+.detail-container {
+    flex: 1;
+    margin-left: 300px; /* Account for sidebar width */
+    /* max-width: 1200px; */
+    padding: 2rem;
+    padding-top: 5rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .plant-navigation-sidebar {
+        width: 240px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .plant-navigation-sidebar.mobile-open {
+        transform: translateX(0);
+    }
+    
+    .detail-container {
+        margin-left: 0;
+        padding: 1rem;
+    }
+    
+    .mobile-nav-toggle {
+        position: fixed;
+        top: 90px;
+        left: 1rem;
+        z-index: 101;
+        background: var(--primary-green);
+        color: var(--white);
+        border: none;
+        padding: 0.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        font-size: 0.9rem;
+    }
+    
+    .mobile-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 99;
+        display: none;
+    }
+    
+    .mobile-overlay.active {
+        display: block;
+    }
+}
+
+.plant-header {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.plant-model {
+    width: 100%;
+    height: 400px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.plant-model-container model-viewer {
+    background: var(--light-gray);
+}
+
+.plant-basic-info h1 {
+    font-size: 2.5rem;
+    color: #000000; /* Make plant name black */
+    margin-bottom: 1rem;
+    font-weight: 800; /* Make plant name very bold */
+}
+
+.plant-basic-info .scientific-name {
+    font-style: italic;
+    color: #333333; /* Make scientific name dark gray */
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-weight: 600; /* Make scientific name bold */
+}
+
+.plant-basic-info .description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333333; /* Make description dark gray */
+    font-weight: 600; /* Make description bold */
+}
+
+.content-sections {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+}
+
+.sidebar {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 1.5rem;
+    height: fit-content;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+    color: var(--light-gray);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.sidebar-menu {
+    list-style: none;
+}
+
+.sidebar-menu li {
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-menu a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #333333; /* Make sidebar menu text dark gray */
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 600; /* Make sidebar menu text bold */
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    background: var(--light-green);
+    color: var(--primary-green);
+}
+
+.main-content {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.content-section h2 {
+    color: var(--primary-green);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 700; /* Make section headings bold */
+}
+
+.content-section h2 i {
+    font-size: 1.5rem;
+}
+
+.diseases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.disease-card {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    background: var(--light-gray);
+}
+
+.disease-card:hover {
+    border-color: var(--primary-green);
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.1);
+}
+
+.disease-card h4 {
+    color:var(--text-gray); /* Make disease names black */
+    margin-bottom: 0.5rem;
+    font-weight: 700; /* Make disease names bold */
+}
+
+.disease-card p {
+    color: var(--white); /* Make disease descriptions dark gray */
+    line-height: 1.6;
+    font-weight: 500; /* Make disease descriptions medium bold */
+}
+
+.info-list {
+    list-style: none;
+}
+
+.info-list li {
+    display: flex;
+    align-items: start;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--light-gray);
+    border-radius: 8px;
+    color: #ffffff; /* Make list item text white on dark green */
+    font-weight: 600; /* Make list item text bold */
+}
+
+.info-list li i {
+    color: var(--primary-green);
+    margin-right: 1rem;
+    margin-top: 0.2rem;
+    font-size: 1.2rem;
+}
+
+.info-list li strong {
+    color: #ffffff; /* Make list item titles white on dark green */
+    margin-right: 0.5rem;
+    font-weight: 700; /* Make list item titles bold */
+}
+
+/* Map Styles */
+.plant-location-map {
+    width: 100%;
+    height: 400px;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--border-color);
+}
+
+.map-container {
+    margin-bottom: 2rem;
+}
+
+.map-legend {
+    background: var(--white);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #000000;
+    font-weight: 700;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 0.75rem;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.legend-commercial {
+    background: #22c55e;
+}
+
+.legend-wild {
+    background: #8b5cf6;
+}
+
+.legend-traditional {
+    background: #f59e0b;
+}
+
+.legend-sacred {
+    background: #ef4444;
+}
+
+@media (max-width: 768px) {
+    .plant-header {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .content-sections {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-container {
+        padding: 1rem;
+    }
+}
