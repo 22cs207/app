@@ -1,129 +1,116 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const chatBubble = document.querySelector('.chat-bubble');
-    const chatIcon = document.querySelector('.chat-icon');
-    const chatContainer = document.querySelector('.chat-container');
-    const closeBtn = document.querySelector('.close-btn');
-    const chatInput = document.querySelector('.chat-input');
-    const sendBtn = document.querySelector('.send-btn');
-    const chatMessages = document.querySelector('.chat-messages');
+    const chatIcon = document.getElementById('chat-icon');
+    const chatContainer = document.getElementById('chat-container');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+    const icon = chatIcon.querySelector('i');
 
-    // Toggle chat container
-    chatIcon.addEventListener('click', () => {
-        chatContainer.classList.add('active');
-    });
+    const API_KEY = "AIzaSyAaoFBv2N3uFFSb8cLnDkTwq9ei1Cb8Vb0";
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
 
-    closeBtn.addEventListener('click', () => {
-        chatContainer.classList.remove('active');
-    });
-
-    // Auto-resize textarea
-    chatInput.addEventListener('input', function() {
-        this.style.height = 'auto';
-        this.style.height = (this.scrollHeight) + 'px';
-    });
-
-    // Send message function
-    async function sendMessage(message) {
-        console.log('Sending message:', message);
-        // Add user message to chat
-        addMessage(message, 'user');
-        
-        // Show thinking animation
-        const thinkingDiv = showThinking();
-
-        try {
-            console.log('Making API request...');
-            const response = await fetch('http://localhost:5000/chat', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ message: message })
-            });
-
-            const data = await response.json();
-            
-            if (data.error) {
-                throw new Error(data.error);
-            }
-
-            // Add bot response to chat
-            addMessage(data.response, 'bot');
-        } catch (error) {
-            console.error('Error:', error);
-            addMessage('Sorry, I encountered an error. Please try again later.', 'bot');
+    const toggleChat = () => {
+        chatContainer.classList.toggle('active');
+        if (chatContainer.classList.contains('active')) {
+            icon.classList.remove('fa-comments');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-comments');
         }
-    }
+    };
 
-    // Show thinking animation
-    function showThinking() {
+    chatIcon.addEventListener('click', toggleChat);
+
+    const addMessage = (text, type) => {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', type);
+        messageDiv.textContent = text;
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+
+    const showThinking = () => {
         const thinkingDiv = document.createElement('div');
-        thinkingDiv.classList.add('thinking');
-        thinkingDiv.innerHTML = `
-            <div class="thinking-dots">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        `;
+        thinkingDiv.classList.add('message', 'thinking');
+        thinkingDiv.innerHTML = `<div class="thinking-dots"><span></span><span></span><span></span></div>`;
         chatMessages.appendChild(thinkingDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
         return thinkingDiv;
-    }
+    };
 
-    // Format bot response
-    function formatBotResponse(response) {
-        // Handle JSON responses
-        if (typeof response === 'object') {
-            const formattedResponse = [];
-            if (response.identified_plants && response.identified_plants.length > 0) {
-                formattedResponse.push('Plants mentioned: ' + response.identified_plants.join(', '));
-            }
-            if (response.identified_conditions && response.identified_conditions.length > 0) {
-                formattedResponse.push('Conditions mentioned: ' + response.identified_conditions.join(', '));
-            }
-            if (response.response) {
-                formattedResponse.push('\n' + response.response);
-            }
-            return formattedResponse.join('\n');
-        }
-        return response;
-    }
-
-    // Add message to chat container
-    function addMessage(message, type) {
-        const messageDiv = document.createElement('div');
-        messageDiv.classList.add('message', `${type}-message`);
-        
-        // Remove any thinking animation if it exists
-        const thinking = chatMessages.querySelector('.thinking');
-        if (thinking) {
-            thinking.remove();
+    async function getBotResponse(userMessage) {
+        if (API_KEY === "YOUR_GOOGLE_AI_API_KEY_HERE") {
+            return "Error: Please add your Google AI API key to the script.";
         }
 
-        // Format and set the message
-        const formattedMessage = type === 'bot' ? formatBotResponse(message) : message;
-        messageDiv.textContent = formattedMessage;
-        
-        chatMessages.appendChild(messageDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+        try {
+            const payload = {
+                "contents": [{
+                    "parts": [{
+                        "text": `You are AYUSH Assistant, a friendly and knowledgeable expert on medicinal plants, particularly those used in AYUSH systems (Ayurveda, Yoga & Naturopathy, Unani, Siddha, and Homeopathy). Provide helpful, safe, and accurate information. Do not provide medical advice, diagnosis, or prescriptions. Always recommend consulting a qualified healthcare professional before using any herbal remedies.
+
+User question: "${userMessage}"`
+                    }]
+                }],
+            };
+
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(`API returned an error: ${errorData.error.message}`);
+            }
+
+            const data = await response.json();
+
+            if (data.candidates && data.candidates[0] && data.candidates[0].content) {
+                return data.candidates[0].content.parts[0].text;
+            } else {
+                throw new Error("Could not parse the bot's response.");
+            }
+        } catch (error) {
+            console.error("Error fetching from API:", error);
+            return `Sorry, I'm having trouble connecting right now. Please check the console for details.`;
+        }
     }
 
-    // Handle send button click
-    sendBtn.addEventListener('click', () => {
-        const message = chatInput.value.trim();
-        if (message) {
-            sendMessage(message);
-            chatInput.value = '';
-            chatInput.style.height = 'auto';
-        }
-    });
+    const handleSendMessage = async () => {
+        const messageText = chatInput.value.trim();
+        if (!messageText) return;
 
-    // Handle enter key press
-    chatInput.addEventListener('keypress', (e) => {
+        sendBtn.disabled = true;
+        chatInput.disabled = true;
+
+        addMessage(messageText, 'user-message');
+        chatInput.value = '';
+
+        const thinkingIndicator = showThinking();
+        const botResponse = await getBotResponse(messageText);
+
+        thinkingIndicator.remove();
+        if (botResponse.toLowerCase().startsWith("sorry") || botResponse.toLowerCase().startsWith("error")) {
+            addMessage(botResponse, 'error-message');
+        } else {
+            addMessage(botResponse, 'bot-message');
+        }
+
+        sendBtn.disabled = false;
+        chatInput.disabled = false;
+        chatInput.focus();
+    };
+
+    sendBtn.addEventListener('click', handleSendMessage);
+    chatInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            sendBtn.click();
+            handleSendMessage();
         }
     });
 });
